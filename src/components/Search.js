@@ -8,7 +8,7 @@ import {githubUsers} from '../utils.js/githubUsers';
 
 
 const Search = () => {
-  const [search, setSearch] = React.useState('')
+  const [search, setSearch] = React.useState('john-smilga')
   const [userOption, setUserOption] = React.useState(githubUsers[0])
   const {
     request, error, loading, 

@@ -10,12 +10,10 @@ const GithubContext = React.createContext()
 // Provider, Consumer - GithubContext.Provider
 const GithubProvider = ({ children }) => {
   // user, followers, repos
-  // const [githubUser, setGithubUser] = useState(mockUser)
-  // const [followers, setFollowers] = useState(mockFollowers)
-  // const [repos, setRepos] = useState(mockRepos)
-  const [githubUser, setGithubUser] = useState({})
-  const [followers, setFollowers] = useState([])
-  const [repos, setRepos] = useState([])
+  const [githubUser, setGithubUser] = useState(mockUser)
+  const [followers, setFollowers] = useState(mockFollowers)
+  const [repos, setRepos] = useState(mockRepos)
+
 
   // request, error, loading
   const [request, setRequest] = useState(0)
@@ -26,14 +24,11 @@ const GithubProvider = ({ children }) => {
     // toggle error to default (no error)
     toggleError()
     setLoading(true)
-
     // userinfo
     const response = await axios(apiUrls.GetUser + user)
-      .catch((err => console.log(err)))
-
+    .catch((err => console.log(err)))
     if (response) {
       setGithubUser(response.data)
-
       // display data only when everything was coming back...
       const { followers_url, repos_url } = response.data
       await Promise.allSettled([
